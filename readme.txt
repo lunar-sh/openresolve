@@ -3,7 +3,7 @@ openresolve
 
 Simple openalias resolver written in C.
 
-Usage: openalias <domain> [-t ticker] (default=xmr)
+Usage: openresolve <domain> [-t ticker] (default=xmr)
 
 Examples:
 openresolve lunar.sh
@@ -19,4 +19,5 @@ binaries
 -------
 
 Check out releases for prebuilt Windows & Linux binaries.
+
 
