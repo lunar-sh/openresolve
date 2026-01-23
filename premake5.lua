@@ -12,7 +12,7 @@ project "openalias"
    files { "openalias.c" }
 
    filter "system:windows"
-      defines {"_WIN32" }
+      defines {"_WIN32", "_CRT_SECURE_NO_WARNINGS"}
       links { "dnsapi" }
       systemversion "latest"
 
