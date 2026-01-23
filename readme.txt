@@ -4,6 +4,7 @@ openalias
 Simple openalias resolver written in C.
 
 Usage: openalias <domain> [-t ticker] (default=xmr)
+Example: openalias lunar.sh
 
 
 build
