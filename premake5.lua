@@ -8,8 +8,8 @@ project "openalias"
    kind "ConsoleApp"
    language "C"
    targetdir "bin/%{cfg.buildcfg}"
-
    files { "openalias.c" }
+   staticruntime "On"
 
    filter "system:windows"
       defines {"_WIN32", "_CRT_SECURE_NO_WARNINGS"}
@@ -18,7 +18,7 @@ project "openalias"
 
    filter "system:linux"
       defines { "_POSIX_C_SOURCE=200112L" }
-      links { "resolv" }
+      links { "resolv:static" }
       buildoptions { "-Wall", "-Wextra" }
 
    filter "configurations:Debug"

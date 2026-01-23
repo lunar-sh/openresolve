@@ -47,38 +47,45 @@ static void normalize_ticker(char* s) {
         *s = (char)toupper((unsigned char)*s);
 }
 
-static int is_valid_label(const char* s, size_t len) {
-    if (len == 0 || len > LABEL_MAX) return 0;
-    if (s[0] == '-' || s[len - 1] == '-') return 0;
+static int is_valid_label(const char* s, size_t len)
+{
+    if (len == 0 || len > LABEL_MAX)
+        return 0;
+
     for (size_t i = 0; i < len; i++) {
-        if (!(isalnum((unsigned char)s[i]) || s[i] == '-'))
+        unsigned char c = (unsigned char)s[i];
+
+        if (!isalnum(c) && c != '-')
+            return 0;
+
+        if ((i == 0 || i == len - 1) && c == '-')
             return 0;
     }
+
     return 1;
 }
 
-static int is_valid_fqdn(const char* s) {
+static int is_valid_fqdn(const char* s)
+{
     size_t len = strlen(s);
-    if (len < 3 || len > FQDN_MAX) return 0;
+    if (len < 3 || len > FQDN_MAX)
+        return 0;
 
     const char* label = s;
-    const char* p = s;
-    while (1) {
+    for (const char* p = s; ; ++p) {
         if (*p == '.' || *p == '\0') {
-            if (!is_valid_label(label, (size_t)(p - label)))
+            if (!is_valid_label(label, p - label))
                 return 0;
-            if (*p == '\0') break;
+            if (*p == '\0')
+                return 1;
             label = p + 1;
         }
-        p++;
     }
-    return 1;
 }
 
 static int starts_with(const char* s, const char* prefix) {
     return str_nicmp(s, prefix, strlen(prefix)) == 0;
 }
-
 
 static int parse_openalias(const char* txt,
     openalias_record* rec,
@@ -108,7 +115,7 @@ static int parse_openalias(const char* txt,
 
     if (rec->address[0] == '\0') return 0;
 
-    strncpy(rec->currency, currency, STR_TICKER_MAX - 1);
+    snprintf(rec->currency, STR_TICKER_MAX, "%s", currency);
     rec->currency[STR_TICKER_MAX - 1] = '\0';
     return 1;
 }
@@ -238,4 +245,3 @@ int main(int argc, char** argv) {
 
     return EXIT_SUCCESS;
 }
-
