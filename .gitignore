@@ -1,0 +1,10 @@
+bin/*
+obj/*
+.vs/*
+*.db
+Makefile
+*.make
+*.sln
+*.vcxproj
+*.user
+.vcxproj.user
