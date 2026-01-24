@@ -1,3 +1,49 @@
+/**
+ * @file openresolve.c
+ * @brief simple openalias resolver for XMR
+ *
+ * +---------------------------------------+
+ * |     .-.       .-.       .-.           |
+ * |    /   \     /   \     /   \     +    |
+ * |         \   /     \   /     \   /     |
+ * |          "_"       "_"       "_"      |
+ * |                                       |
+ * |  _   _   _ _  _   _   ___   ___ _  _  |
+ * | | | | | | | \| | /_\ | _ \ / __| || | |
+ * | | |_| |_| | .` |/ _ \|   /_\__ \ __ | |
+ * | |____\___/|_|\_/_/ \_\_|_(_)___/_||_| |
+ * |                                       |
+ * |                                       |
+ * | Lunar RF Labs                         |
+ * | Email: root@lunar.sh                  |
+ * |                                       |
+ * | Research Laboratories                 |
+ * | OpenAlias (BTC, XMR): lunar.sh        |
+ * | Copyright (C) 2022-2024               |
+ * +---------------------------------------+
+ *
+ *
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
+ *
+ *     * Redistributions of source code must retain the above copyright notice,
+ *       this list of conditions and the following disclaimer.
+ *     * Redistributions in binary form must reproduce the above copyright notice,
+ *       this list of conditions and the following disclaimer in the documentation
+ *       and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -47,8 +93,7 @@ static void normalize_ticker(char* s) {
         *s = (char)toupper((unsigned char)*s);
 }
 
-static int is_valid_label(const char* s, size_t len)
-{
+static int is_valid_label(const char* s, size_t len) {
     if (len == 0 || len > LABEL_MAX)
         return 0;
 
@@ -65,8 +110,7 @@ static int is_valid_label(const char* s, size_t len)
     return 1;
 }
 
-static int is_valid_fqdn(const char* s)
-{
+static int is_valid_fqdn(const char* s) {
     size_t len = strlen(s);
     if (len < 3 || len > FQDN_MAX)
         return 0;
@@ -245,3 +289,4 @@ int main(int argc, char** argv) {
 
     return EXIT_SUCCESS;
 }
+
