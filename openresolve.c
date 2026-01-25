@@ -1,6 +1,6 @@
 /**
  * @file openresolve.c
- * @brief simple openalias resolver for XMR
+ * @brief Tiny XMR openalias resolver
  *
  * +---------------------------------------+
  * |     .-.       .-.       .-.           |
@@ -289,4 +289,5 @@ int main(int argc, char** argv) {
 
     return EXIT_SUCCESS;
 }
+
 
