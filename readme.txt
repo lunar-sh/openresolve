@@ -24,8 +24,3 @@ web version
 -------
 
 Available at: https://api.lunar.sh/bin/openresolve
-
-
-
-
-
