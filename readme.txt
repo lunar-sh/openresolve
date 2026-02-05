@@ -1,7 +1,7 @@
 openresolve
 ---------
 
-Simple openalias resolver written in C.
+Simple openalias CLI resolver written in C.
 
 Usage: openresolve <domain> [-t ticker] (default=xmr)
 
@@ -24,5 +24,6 @@ Web version
 ------
 
 Available at: https://api.lunar.sh/bin/openresolve
+
 
 
