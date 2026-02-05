@@ -20,4 +20,9 @@ binaries
 
 Check out releases for prebuilt Windows & Linux binaries.
 
+Web version
+------
+
+Available at: https://api.lunar.sh/bin/openresolve
+
 
